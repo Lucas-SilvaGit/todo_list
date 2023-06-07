@@ -1,33 +1,28 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Tasks</h1>
+<div class="container">
+  <h1 class="d-flex justify-content-center">To do List</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th>Delivery date</th>
-      <th>Completed</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+  <div class="row">
+    <div class="col-md-12 d-flex justify-content-end">
+      <%= link_to 'New Task', new_task_path, class:"btn btn-primary" %>
+    </div>
     <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.title %></td>
-        <td><%= task.body %></td>
-        <td><%= task.delivery_date %></td>
-        <td><%= task.completed %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="col-md-3  mt-3">
+        <div class="card mb-3">
+          <div class="card-body">
+            <h5 class="card-title"><%= task.title %></h5>
+            <p class="card-text"><strong>Task:</strong> <br> <%= task.body %></p>
+            <p class="card-text"><strong>Delivery Date:</strong> <%= task.delivery_date %></p>
+            <p class="card-text"><strong>Completed:</strong> <%= task.completed %></p>
+            <%= link_to 'Edit', edit_task_path(task), class: 'btn btn-warning' %>
+            <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
 
-<br>
+  <br>
+</div>
 
-<%= link_to 'New Task', new_task_path %>
