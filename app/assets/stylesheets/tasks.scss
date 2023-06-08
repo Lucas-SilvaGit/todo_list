@@ -1,3 +1,7 @@
-// Place all the styles related to the tasks controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.task-description {
+  display: -webkit-box;
+  -webkit-line-clamp: 5; /* Número de linhas permitidas antes de cortar o texto */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
