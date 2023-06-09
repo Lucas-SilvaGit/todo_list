@@ -6,7 +6,7 @@
   <div class="row">
     <div class="col-md-12 mb-3 d-flex justify-content-between align-items-center">
       <%= link_to 'New Task', new_task_path, class:"btn btn-primary btn-sm text-light" %>
-      <%= link_to 'Logout', destroy_user_session_path, method: :delete, class:"btn btn-secondary btn-sm text-dark" %>
+      <%= link_to 'Logout', destroy_user_session_path, method: :delete, class:"btn btn-dark btn-sm text-light" %>
     </div>
     <% @tasks.each do |task| %>
       <div class="col-md-3">
