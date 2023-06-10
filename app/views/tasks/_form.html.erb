@@ -11,27 +11,29 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="modal-body card-body">
+    <div class="mb-3">
+      <%= form.label :title, class:"form-label" %>
+      <%= form.text_field :title, class:"form-control", placeholder:"Enter title here!" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :body, class:"form-label" %>
+      <%= form.text_area :body, class:"form-control", placeholder:"Enter task description here!" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :delivery_date, class:"form-label" %>
+      <%= form.date_select :delivery_date, class:"form-control" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :completed, class:"form-label" %>
+      <%= form.check_box :completed%>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body %>
-  </div>
-
-  <div class="field">
-    <%= form.label :delivery_date %>
-    <%= form.date_select :delivery_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :completed %>
-    <%= form.check_box :completed %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="modal-footer card-body text-end">
+    <%= form.submit "Save", class:"btn btn-primary" %>
   </div>
 <% end %>
