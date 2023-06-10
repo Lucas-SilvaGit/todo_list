@@ -1,0 +1,4 @@
+var modal = new bootstrap.Modal(document.querySelector("#modal-report"));
+var modalContent = document.querySelector("#modal-report .modal-content");
+modalContent.innerHTML = "<%= j (render 'edit', action: 'Editing Task') %>";
+modal.show();
