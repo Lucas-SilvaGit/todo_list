@@ -5,7 +5,7 @@
 
   <div class="row">
     <div class="col-md-12 mb-3 d-flex justify-content-between align-items-center">
-      <%= link_to 'New Task', new_task_path, class:"btn btn-primary btn-sm text-light" %>
+      <%= link_to 'New Task', new_task_path, {:remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-report', action: 'new', class: 'btn btn-primary btn-sm text-light'}   %>
       <%= link_to 'Logout', destroy_user_session_path, method: :delete, class:"btn btn-dark btn-sm text-light" %>
     </div>
     <% @tasks.each do |task| %>
@@ -18,7 +18,7 @@
             <%= simple_form_for(task, remote: true) do |f| %>
               <%= f.input :completed, as: :boolean, label: "Completed?" %>
               <%= f.submit :updated, class: 'btn btn-primary btn-sm' %>
-              <%= link_to 'Edit', edit_task_path(task), class: 'btn btn-warning btn-sm text-light' %>
+              <%= link_to 'Edit', edit_task_path(task), {:remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-report', action: 'edit',  class: 'btn btn-warning btn-sm text-light'} %>
               <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm text-light' %>
             <% end %>
           </div>
@@ -29,3 +29,8 @@
   <br>
 </div>
 
+<div class="modal modal-blur fade" id="modal-report" tabindex="-1" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content"></div>
+  </div>
+</div>
