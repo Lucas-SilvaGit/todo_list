@@ -16,10 +16,11 @@
           </div>
         </div>
 
-        <div class="d-grid">
-          <%= f.submit "Log in", class: "btn btn-primary" %>
+        <div class="card-footer bg-transparent">
+          <div class="d-grid">
+            <%= f.submit "Log in", class: "btn btn-primary" %>
+          </div>
         </div>
-
         <% if devise_mapping.rememberable? %>
           <div class="form-check form-check-inline">
             <%= f.check_box :remember_me, class: "form-check-input" %>
@@ -27,7 +28,6 @@
           </div>
         <% end %>
       </div>
-        
   <% end %>
 
   <div class="text-center">
