@@ -1,33 +1,40 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Tasks</h1>
+<div class="container">
+  <h1 class="d-flex justify-content-center">To do List</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th>Delivery date</th>
-      <th>Completed</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+  <div class="row">
+    <div class="col-md-12 mt-4 mb-4 d-flex justify-content-between align-items-center">
+      <%= link_to 'New Task', new_task_path, {:remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-report', action: 'new', class: 'btn btn-primary text-light'}   %>
+      <%= link_to 'Logout', destroy_user_session_path, method: :delete, class:"btn btn-dark text-light" %>
+    </div>
     <% @tasks.each do |task| %>
-      <tr>
-        <td><%= task.title %></td>
-        <td><%= task.body %></td>
-        <td><%= task.delivery_date %></td>
-        <td><%= task.completed %></td>
-        <td><%= link_to 'Show', task %></td>
-        <td><%= link_to 'Edit', edit_task_path(task) %></td>
-        <td><%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="col-md-3">
+        <div class="card shadow pt-2 ps-2 pe-2 mb-5 rounded">
+          <div class="card-header bg-transparent">
+            <h5 class="card-title"><%= task.title %></h5>
+          </div>
+          <div class="card-body">
+            <p class="card-text task-description"><strong>Task:</strong> <br> <%= task.body %></p>
+            <p class="card-text"><strong>Delivery Date:</strong> <%= task.delivery_date %></p>
+            <%= simple_form_for(task, remote: true) do |f| %>
+              <%= f.input :completed, as: :boolean, label: "Completed?" %>
+          </div>
+          <div class="card-footer actions d-flex justify-content-between button-container bg-transparent">
+            <%= f.submit :Updated, class: 'btn btn-primary btn-sm' %>
+            <%= link_to 'Edit', edit_task_path(task), {:remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-report', action: 'edit',  class: 'btn btn-warning btn-sm text-light'} %>
+            <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm text-light' %>
+          </div>
+            <% end %>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
+  <br>
+</div>
 
-<br>
-
-<%= link_to 'New Task', new_task_path %>
+<div class="modal modal-blur fade" id="modal-report" tabindex="-1" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content"></div>
+  </div>
+</div>

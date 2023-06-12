@@ -60,3 +60,5 @@ gem 'net-smtp'
 gem 'net-imap'
 
 gem 'devise'
+
+gem 'simple_form'
