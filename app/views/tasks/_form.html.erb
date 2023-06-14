@@ -24,7 +24,7 @@
 
     <div class="field">
       <%= form.label :delivery_date, class:"form-label" %>
-      <%= form.date_select :delivery_date, class:"form-control" %>
+      <%= form.date_field :delivery_date, class: "form-control", id: "delivery_date_field" %>
     </div>
 
     <div class="field">
@@ -37,3 +37,9 @@
     <%= form.submit "Save", class:"btn btn-primary" %>
   </div>
 <% end %>
+
+<script>
+  $(document).ready(function() {
+    $("#delivery_date_field").datepicker
+  });
+</script>
