@@ -1,6 +1,6 @@
 .task-description {
   display: -webkit-box;
-  -webkit-line-clamp: 5; /* Número de linhas permitidas antes de cortar o texto */
+  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -11,5 +11,9 @@
 }
 
 .button-container .btn {
-  width: 32%;
+  width: 30%;
+}
+
+#delivery_date_field {
+  width: 20%;
 }
