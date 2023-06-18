@@ -5,8 +5,12 @@
 
   <div class="row">
     <div class="col-md-12 mt-4 mb-4 d-flex justify-content-between align-items-center">
-      <%= link_to 'New Task', new_task_path, {:remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-report', action: 'new', class: 'btn btn-primary text-light'}   %>
-      <%= link_to 'Logout', destroy_user_session_path, method: :delete, class:"btn btn-dark text-light" %>
+      <%= link_to new_task_path, { remote: true, 'data-toggle': "modal", 'data-target': '#modal-report', action: 'new', class: 'btn btn-primary text-light' } do %>
+        <i class="fas fa-plus"></i> New Task
+      <% end %>
+      <%= link_to destroy_user_session_path, method: :delete, class: "btn btn-dark text-light" do %>
+        <i class="fas fa-sign-out-alt"></i> Logout
+      <% end %>
     </div>
     <% @tasks.each do |task| %>
       <div class="col-md-3">
@@ -16,7 +20,7 @@
           </div>
           <div class="card-body">
             <p class="card-text task-description"><strong>Task:</strong> <br> <%= task.body %></p>
-            <p class="card-text"><strong>Delivery Date:</strong> <%= task.delivery_date %></p>
+            <p class="card-text"><strong>Delivery Date:</strong> <%= task.delivery_date.strftime('%d/%m/%Y') %></p>
             <%= simple_form_for(task, remote: true) do |f| %>
               <%= f.label :completed, "Completed:", class: 'form-check-label' %>
               <%= f.check_box :completed, class: 'form-check-input' %>
