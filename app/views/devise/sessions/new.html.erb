@@ -23,7 +23,7 @@
         </div>
         <% if devise_mapping.rememberable? %>
           <div class="form-check form-check-inline">
-            <%= f.check_box :remember_me%>
+            <%= f.check_box :remember_me, class: "form-check-input" %>
             <%= f.label :remember_me, class: "form-check-label" %>
           </div>
         <% end %>
