@@ -17,17 +17,17 @@
       <%= form.text_field :title, class:"form-control", placeholder:"Enter title here!" %>
     </div>
 
-    <div class="field">
+    <div class="mb-3">
       <%= form.label :body, class:"form-label" %>
       <%= form.text_area :body, class:"form-control", placeholder:"Enter task description here!" %>
     </div>
 
-    <div class="field">
+    <div class="mb-3">
       <%= form.label :delivery_date, class:"form-label" %>
       <%= form.date_field :delivery_date, class: "form-control", id: "delivery_date_field" %>
     </div>
 
-    <div class="field">
+    <div class="mb-3">
       <%= form.label :completed, class:"form-label" %>
       <%= form.check_box :completed, class: "form-check-input"%>
     </div>
