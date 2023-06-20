@@ -14,6 +14,7 @@ class TasksController < ApplicationController
   # GET /tasks/new
   def new
     @task = Task.new
+    @task.delivery_date = Date.today
     respond_to do |format|
       format.html
       format.js

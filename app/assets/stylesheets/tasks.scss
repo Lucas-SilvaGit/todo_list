@@ -1,11 +1,3 @@
-.task-description {
-  display: -webkit-box;
-  -webkit-line-clamp: 5;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 #card-modal{
   padding: 0 20px 0 20px;
 }
@@ -16,4 +8,17 @@
 
 #delivery_date_field {
   width: 20%;
+}
+
+.body {
+  background-color: GhostWhite;
+}
+
+.main{
+  background-color: AliceBlue;
+  min-height: 100vh;
+}
+
+.form-check .form-check-input {
+  float: none !important;
 }

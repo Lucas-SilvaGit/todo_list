@@ -5,8 +5,12 @@
 
   <div class="row">
     <div class="col-md-12 mt-4 mb-4 d-flex justify-content-between align-items-center">
-      <%= link_to 'New Task', new_task_path, {:remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-report', action: 'new', class: 'btn btn-primary text-light'}   %>
-      <%= link_to 'Logout', destroy_user_session_path, method: :delete, class:"btn btn-dark text-light" %>
+      <%= link_to new_task_path, { remote: true, 'data-toggle': "modal", 'data-target': '#modal-report', action: 'new', class: 'btn btn-primary text-light' } do %>
+        <i class="fas fa-plus"></i> New Task
+      <% end %>
+      <%= link_to destroy_user_session_path, method: :delete, class: "btn btn-dark text-light" do %>
+        <i class="fas fa-sign-out-alt"></i> Logout
+      <% end %>
     </div>
     <% @tasks.each do |task| %>
       <div class="col-md-3">
@@ -16,15 +20,24 @@
           </div>
           <div class="card-body">
             <p class="card-text task-description"><strong>Task:</strong> <br> <%= task.body %></p>
-            <p class="card-text"><strong>Delivery Date:</strong> <%= task.delivery_date %></p>
+            <p class="card-text"><strong>Delivery Date:</strong> <%= task.delivery_date.strftime('%d/%m/%Y') %></p>
             <%= simple_form_for(task, remote: true) do |f| %>
-              <%= f.input :completed, as: :boolean, label: "Completed?" %>
+              <%= f.label :completed, "Completed:", class: 'form-check-label' %>
+              <%= f.check_box :completed, class: 'form-check-input' %>
           </div>
-          <div class="card-footer actions d-flex justify-content-between button-container bg-transparent">
-            <%= f.submit :Updated, class: 'btn btn-primary btn-sm' %>
-            <%= link_to 'Edit', edit_task_path(task), {:remote => true, 'data-toggle' => "modal", 'data-target' => '#modal-report', action: 'edit',  class: 'btn btn-warning btn-sm text-light'} %>
-            <%= link_to 'Destroy', task, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-sm text-light' %>
-          </div>
+            <div class="card-footer actions d-flex justify-content-between button-container bg-transparent">
+              <button class="btn btn-outline-primary">
+                <i class="fa-solid fa-arrows-rotate"></i>
+              </button>
+
+              <%= link_to edit_task_path(task), remote: true, 'data-toggle': "modal", 'data-target': '#modal-report', action: 'edit', class: 'btn btn-outline-secondary' do %>
+                <i class="fas fa-edit"></i>
+              <% end %>
+              
+              <%= link_to task, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' do %>
+                <i class="fas fa-trash"></i>
+              <% end %>
+            </div>
             <% end %>
         </div>
       </div>
