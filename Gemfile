@@ -62,3 +62,5 @@ gem 'net-imap'
 gem 'devise'
 
 gem 'simple_form'
+
+gem 'toastr-rails'

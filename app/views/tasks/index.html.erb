@@ -1,6 +1,14 @@
-<p id="notice"><%= notice %></p>
+<% if flash[:notice].present? %>
+  <script>
+    toastr.options.positionClass = 'toast-top-center';
+    toastr.options.closeButton = true;
+    toastr.options.progressBar = true;
+    toastr.options.timeOut = 2000;
+    toastr.success("<%= j flash[:notice] %>");
+  </script>
+<% end %>
 
-<div class="container">
+<div class="container pt-3">
   <h1 class="d-flex justify-content-center">To do List</h1>
 
   <div class="row">
