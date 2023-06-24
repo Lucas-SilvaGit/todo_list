@@ -22,15 +22,15 @@
     </div>
     <% @tasks.each do |task| %>
       <div class="col-md-3">
-        <div class="card shadow pt-2 ps-2 pe-2 mb-5 rounded">
+        <div class="card shadow pt-2 ps-2 pe-2 mb-5 rounded <%= task_status_class(task) %>">
           <div class="card-header bg-transparent">
-            <h5 class="card-title"><%= task.title %></h5>
+            <h5 class="card-title fs-4"><%= task.title %></h5>
           </div>
           <div class="card-body">
-            <p class="card-text task-description"><strong>Task:</strong> <br> <%= task.body %></p>
-            <p class="card-text"><strong>Delivery Date:</strong> <%= task.delivery_date.strftime('%d/%m/%Y') %></p>
+            <p class="card-text task-description fs-6"><strong>Task:</strong> <br> <%= task.body %></p>
+            <p class="card-text fs-6"><strong>Delivery Date:</strong> <%= task.delivery_date.strftime('%d/%m/%Y') %></p>
             <%= simple_form_for(task, remote: true) do |f| %>
-              <%= f.label :completed, "Completed:", class: 'form-check-label' %>
+              <%= f.label :completed, "Completed:", class: 'form-check-label fw-bolder' %>
               <%= f.check_box :completed, class: 'form-check-input' %>
           </div>
             <div class="card-footer actions d-flex justify-content-between button-container bg-transparent">
