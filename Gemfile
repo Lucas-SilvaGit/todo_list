@@ -64,3 +64,6 @@ gem 'devise'
 gem 'simple_form'
 
 gem 'toastr-rails'
+
+gem 'bootstrap', '~> 5.0'
+gem 'jquery-rails'
