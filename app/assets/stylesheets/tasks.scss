@@ -23,6 +23,12 @@
   float: none !important;
 }
 
-.img-login {
+@media (max-width: 540px) {
+  .div-img {
+    display: none;
+  }
+}
+
+.img-fluid {
   min-height: 100%;
 }
