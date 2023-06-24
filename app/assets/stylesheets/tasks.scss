@@ -22,3 +22,13 @@
 .form-check .form-check-input {
   float: none !important;
 }
+
+@media (max-width: 540px) {
+  .div-img {
+    display: none;
+  }
+}
+
+.img-fluid {
+  min-height: 100%;
+}
