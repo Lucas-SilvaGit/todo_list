@@ -2,24 +2,31 @@
   <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
     <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="card text-center shadow p-3 mb-3 rounded">
-      <div class="card-header bg-transparent">
-        <h2 class="card-title">Forgot your password?</h2>
-      </div>
+    <div class="card text-center shadow rounded">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="/img/image" class="img-fluid rounded-start img-login" alt="image">
+        </div>
 
-      <div class="card-body">
-        <div class="mb-3">
-          <%= f.label :email, class:"form-label" %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+        <div class="col-md-8 p-3 mb-3">
+          <div class="card-header bg-transparent">
+            <h2 class="card-title">Forgot your password?</h2>
+          </div>
+
+          <div class="card-body">
+            <div class="mb-3">
+              <%= f.label :email, class:"form-label" %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"form-control" %>
+            </div>
+          </div>
+
+          <div class="card-footer bg-transparent pt-4">
+            <div class="db-grid">
+              <%= f.submit "Send me reset password instructions", class: "btn btn-primary" %>
+            </div>
+          </div>
         </div>
       </div>
-
-      <div class="card-footer bg-transparent">
-        <div class="db-grid">
-          <%= f.submit "Send me reset password instructions", class: "btn btn-primary" %>
-        </div>
-      </div>
-    </div>
   <% end %>
 </div>
 
