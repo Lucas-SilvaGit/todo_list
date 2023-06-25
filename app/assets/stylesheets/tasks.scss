@@ -32,3 +32,7 @@
 .img-fluid {
   min-height: 100%;
 }
+
+.no-hover-bg:hover {
+  background-color: transparent !important;
+}
