@@ -1,0 +1,45 @@
+<div class="container container-sm" style="max-width: 540px;">
+  <%= form_with(url: profiles_path, model: @user, local: true	) do |f| %>
+    <div class="card shadow rounded" >
+      <div class="row">
+        <div class="p-3 mb-3">
+          <div class="card-header bg-transparent">
+            <h2 class="card-title text-center">User Profile</h2>
+          </div>
+          <div class="card-body">
+            <div class="mb-3">
+              <%= f.label :first_name, class:"form-label"%><br />
+              <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "form-control" %>
+            </div>
+
+            <div class="mb-3">
+              <%= f.label :last_name, class:"form-label"%><br />
+              <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "form-control" %>
+            </div>
+
+            <div class="mb-3">
+              <%= f.label :email, class:"form-label", for:"disabledField" %><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", id:"disabledInput", disabled: true %>
+            </div>
+
+            <div class="mb-3">
+              <%= f.label :password, class:"form-label" %><br />
+              <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+            </div>
+
+            <div class="mb-3">
+              <%= f.label :password_confirmation, class:"form-label" %><br />
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="card-footer bg-transparent">
+            <div class="d-grid">
+              <%= f.submit "Update", class: "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
