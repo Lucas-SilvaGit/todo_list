@@ -12,7 +12,10 @@
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle no-hover-bg" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="../img/avatar.jpg" alt="Avatar" class="rounded-circle" style="width: 30px; height: 30px;">
+            <div class="d-flex align-items-center w-10%">
+              <p class=""><%= @user.full_name %></p>
+              <img src="../img/avatar.jpg" alt="Avatar" class="rounded-circle" style="width: 30px; height: 30px;">
+            </div>
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li>
