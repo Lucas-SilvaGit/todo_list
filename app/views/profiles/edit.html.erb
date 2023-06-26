@@ -53,6 +53,11 @@
               <%= f.label :password_confirmation, class:"form-label no-hover-bg" %><br />
               <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
             </div>
+
+            <div class="mb-3">
+              <%= f.label :avatar, class: "form-label" %><br>
+              <%= f.file_field :avatar, class: "form-control" %>
+            </div>
           </div>
 
           <div class="card-footer bg-transparent">
