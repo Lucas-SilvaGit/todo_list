@@ -1,3 +1,13 @@
+<% if flash[:notice].present? %>
+  <script>
+    toastr.options.positionClass = 'toast-bottom-right';
+    toastr.options.closeButton = true;
+    toastr.options.progressBar = true;
+    toastr.options.timeOut = 2000;
+    toastr.success("<%= j flash[:notice] %>");
+  </script>
+<% end %>
+
 <div class="container container-sm" style="max-width: 540px;">
   <%= form_with(url: profiles_path, model: @user, local: true	) do |f| %>
     <div class="card shadow rounded" >
