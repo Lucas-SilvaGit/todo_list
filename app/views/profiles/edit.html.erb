@@ -8,6 +8,18 @@
   </script>
 <% end %>
 
+<% if @user.errors.any? %>
+  <script>
+    toastr.options.positionClass = 'toast-bottom-right';
+    toastr.options.closeButton = true;
+    toastr.options.progressBar = true;
+    toastr.options.timeOut = 5000;
+    <% @user.errors.full_messages.each do |message| %>
+      toastr.error("<%= j message %>");
+    <% end %>
+  </script>
+<% end %>
+
 <div class="container container-sm" style="max-width: 540px;">
   <%= form_with(url: profiles_path, model: @user, local: true	) do |f| %>
     <div class="card shadow rounded" >
@@ -33,12 +45,12 @@
             </div>
 
             <div class="mb-3">
-              <%= f.label :password, class:"form-label" %><br />
+              <%= f.label :password, class:"form-label no-hover-bg" %><br />
               <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
             </div>
 
             <div class="mb-3">
-              <%= f.label :password_confirmation, class:"form-label" %><br />
+              <%= f.label :password_confirmation, class:"form-label no-hover-bg" %><br />
               <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
             </div>
           </div>
