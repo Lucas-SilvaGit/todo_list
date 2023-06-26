@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand no-hover-bg">Just Do It</a>
+    <a class="navbar-brand no-hover-bg" href="<%= tasks_path %>">Just Do It</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -12,12 +12,21 @@
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle no-hover-bg" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="../img/avatar.jpg" alt="Avatar" class="rounded-circle" style="width: 30px; height: 30px;">
+            <% if current_user.first_name.present? || current_user.last_name.present? %>
+              <%= @current_user.full_name %>
+            <% else %>
+              <%= @current_user.email %>
+            <% end %>
+            <% if @current_user.avatar.attached? %>
+              <img src="<%= url_for(@current_user.avatar) %>" alt="Avatar" class="rounded-circle" style="width: 30px; height: 30px; margin-left:20px;">
+            <% else %>
+              <img src="../img/avatar.jpg" alt="Default Avatar" class="rounded-circle" style="width: 30px; height: 30px; margin-left:20px;">
+            <% end %>
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li>
               <a class="dropdown-item">
-                <%= link_to new_user_password_path, class: "btn" do %>
+                <%= link_to edit_profiles_path, class: "btn" do %>
                   Profile
                 <% end %>
               </a>
