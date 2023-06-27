@@ -1,11 +1,18 @@
-<% if @user.errors.any? %>
+<% if flash[:notice].present? || flash[:error].present? %>
   <script>
     toastr.options.positionClass = 'toast-bottom-right';
     toastr.options.closeButton = true;
     toastr.options.progressBar = true;
     toastr.options.timeOut = 5000;
-    <% @user.errors.full_messages.each do |message| %>
-      toastr.error("<%= j message %>");
+
+    <% if flash[:notice].present? %>
+      toastr.success("<%= j flash[:notice] %>");
+    <% end %>
+
+    <% if flash[:error].present? %>
+      <% flash[:error].split(',').each do |message| %>
+        toastr.error("<%= j message.strip %>");
+      <% end %>
     <% end %>
   </script>
 <% end %>
