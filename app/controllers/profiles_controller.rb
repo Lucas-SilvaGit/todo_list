@@ -8,11 +8,13 @@ class ProfilesController < ApplicationController
 
   def update
     if @user.update(params_user)
-      redirect_to edit_profiles_path, notice: 'Profile updated successfully', toastr: "success"
+      flash[:notice] = 'Profile updated successfully'
+      redirect_to edit_profiles_path
     else
+      flash[:error] = @user.errors.full_messages.join(', ')
       render :edit
     end
-  end
+  end  
 
   private
 
@@ -30,3 +32,4 @@ class ProfilesController < ApplicationController
     end
   end
 end
+
