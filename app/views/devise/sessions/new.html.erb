@@ -1,3 +1,13 @@
+<% if flash[:alert].present? %>
+  <script>
+    toastr.options.positionClass = 'toast-bottom-right';
+    toastr.options.closeButton = true;
+    toastr.options.progressBar = true;
+    toastr.options.timeOut = 5000;
+    toastr.error("<%= j flash[:alert] %>");
+  </script>
+<% end %>
+
 <div class="container container-sm" style="max-width: 540px;">
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="card text-center shadow rounded" >
