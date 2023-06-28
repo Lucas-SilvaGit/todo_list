@@ -1,6 +1,6 @@
-<%= form_with(model: task) do |form| %>
+<%= form_with(model: task, html: { class: "needs-validation" }) do |form| %>
   <% if task.errors.any? %>
-    <div id="error_explanation">
+    <div id="error_explanation" class="alert alert-danger">
       <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
 
       <ul>
@@ -14,17 +14,17 @@
   <div class="modal-body">
     <div class="mb-3">
       <%= form.label :title, class:"form-label" %>
-      <%= form.text_field :title, class:"form-control", placeholder:"Enter title here!" %>
+      <%= form.text_field :title, class:"form-control", placeholder:"Enter title here!", required: true %>
     </div>
 
     <div class="mb-3">
       <%= form.label :body, class:"form-label" %>
-      <%= form.text_area :body, class:"form-control", placeholder:"Enter task description here!" %>
+      <%= form.text_area :body, class:"form-control", placeholder:"Enter task description here!", required: true %>
     </div>
 
     <div class="mb-3">
       <%= form.label :delivery_date, class:"form-label" %>
-      <%= form.date_field :delivery_date, class: "form-control", id: "delivery_date_field" %>
+      <%= form.date_field :delivery_date, class: "form-control", id: "delivery_date_field", required: true %>
     </div>
 
     <div class="mb-3">
