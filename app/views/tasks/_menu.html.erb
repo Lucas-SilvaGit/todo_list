@@ -9,6 +9,16 @@
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle no-hover-bg" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <% if current_user.first_name.present? || current_user.last_name.present? %>
+              <%= @current_user.full_name %>
+              <% else %>
+                <%= @current_user.email %>
+              <% end %>
+              <% if @current_user.avatar.attached? %>
+                <img src="<%= url_for(@current_user.avatar) %>" alt="Avatar" class="rounded-circle" style="width: 30px; height: 30px; margin-left:20px;">
+              <% else %>
+                <img src="../img/avatar.jpg" alt="Default Avatar" class="rounded-circle" style="width: 30px; height: 30px; margin-left:20px;">
+            <% end %>
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
             <li>
