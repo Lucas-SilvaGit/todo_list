@@ -5,8 +5,10 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <%= render 'form_search' %>
-      <ul class="navbar-nav mb-2 mb-lg-0">
+      <% unless (params[:action] == 'edit' && params[:controller] == 'profiles') || params[:action] == 'update' %>
+        <%= render 'form_search' %>
+      <% end %>
+      <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle no-hover-bg" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             <% if current_user.first_name.present? || current_user.last_name.present? %>
