@@ -1,0 +1,4 @@
+<%= search_form_for(@query, url: tasks_path, method: :get, class: "d-flex mx-auto" ) do |f| %>
+    <%= f.search_field :title_or_body_i_cont_any, placeholder: "Search...", class:"form-control me-2" %>
+    <%= f.submit "Search!", class:"btn btn-outline-primary" %>
+<% end %>

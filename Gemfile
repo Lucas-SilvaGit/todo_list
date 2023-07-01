@@ -64,3 +64,4 @@ gem 'devise'
 gem 'simple_form'
 
 gem 'toastr-rails'
+gem "ransack", "~> 4.0"
