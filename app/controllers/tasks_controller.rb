@@ -4,9 +4,8 @@ class TasksController < ApplicationController
 
   # GET /tasks or /tasks.json
   def index
-    @tasks = current_user.tasks
-    @query = Task.ransack(params[:q])
-    @tasks = @query.result(distinct: true)
+    @query = current_user.tasks.ransack(params[:q]) #retorna apenas as tarefas do usuário atual. aplica a pesquisa usando o Ransack
+    @tasks = @query.result(distinct: true).page(params[:page]) #filtra os registros com base nos critérios de pesquisa do Ransack e do Kaminari para paginar os resultados para obter uma lista paginada de tarefas que correspondem aos critérios de pesquisa definidos pelo usuário.
   end
 
   # GET /tasks/1 or /tasks/1.json

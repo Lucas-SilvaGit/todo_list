@@ -65,3 +65,7 @@ gem 'simple_form'
 
 gem 'toastr-rails'
 gem "ransack", "~> 4.0"
+
+gem 'kaminari'
+gem 'kaminari-bootstrap', '~> 3.0.1'
+gem 'kaminari-i18n', '~> 0.5.0'
