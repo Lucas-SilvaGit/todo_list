@@ -39,3 +39,23 @@
 .no-hover-bg:hover {
   background-color: transparent !important;
 }
+
+
+// Status tasks
+.task-status-completed.fa-circle {
+  color: rgb(90, 178, 90);
+}
+
+.task-status-overdue.fa-circle {
+  color: rgb(229, 85, 85);
+}
+
+.task-status-upcoming.fa-circle {
+  color: rgb(73, 150, 205);
+}
+
+.task-status-normal.fa-circle {
+  color: rgb(245, 180, 61);
+}
+
+// End Status tasks
