@@ -1,6 +1,6 @@
 <%= paginator.render do %>
-  <nav class="fixed-bottom mb-5 nav-pagination">
-    <ul class="pagination justify-content-center mb-5">
+  <nav class="nav-pagination ">
+    <ul class="pagination justify-content-center ">
       <%= first_page_tag unless current_page.first? %>
       <% each_page do |page| %>
         <% if page.left_outer? || page.right_outer? || page.inside_window? %>
