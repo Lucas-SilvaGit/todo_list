@@ -17,15 +17,20 @@
     </div>
     <% @tasks.each do |task| %>
       <div class="col-md-12">
-        <div class="card shadow ps-2 mb-3 rounded">
-          <div class="card-body bg-transparent d-flex justify-content-between align-items-center">
-            <h5 class="card-title fs-4"><%= task.title %></h5>
+        <div class="card shadow-sm ps-2 mb-3 rounded">
+          <div class="card-body d-flex justify-content-between align-items-center">
+            <h5 class="card-title"><%= task.title %></h5>
             <div class="footer d-flex ">
-              <i class="fa-solid fa-circle me-5 mt-2 task-status-<%= task_status_class(task) %>"></i>
+
+              <i class="fa-solid fa-circle me-5 mt-2 custom-cursor-pointer task-status-<%= task_status_class(task) %>" 
+                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="
+                <span><%= task_status_class(task).capitalize %></span> </br> 
+                <span><%= task.delivery_date.strftime('%d/%B') %></span>">
+              </i>
 
               <%= simple_form_for(task, remote: true) do |f| %>
                 <%= f.label :completed, "Completed:", class: 'form-check-label fw-bolder me-2' %>
-                <%= f.check_box :completed, class: 'form-check-input me-2 mt-2' %>
+                <%= f.check_box :completed, class: 'form-check-input me-4 mt-2' %>
                 <button class="btn btn-outline-primary  me-2">
                   <i class="fa-solid fa-arrows-rotate"></i>
                 </button>
@@ -49,10 +54,17 @@
   <br>
 </div>
 
-
-
 <div class="modal modal-blur fade" id="modal-report" tabindex="-1" style="display: none;" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content"></div>
   </div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+  });
+</script>
