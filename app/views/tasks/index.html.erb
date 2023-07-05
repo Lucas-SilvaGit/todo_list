@@ -17,9 +17,10 @@
     </div>
     <% @tasks.each do |task| %>
       <div class="col-md-3">
-        <div class="card shadow pt-2 ps-2 pe-2 mb-5 rounded <%= task_status_class(task) %>">
-          <div class="card-header bg-transparent">
+        <div class="card shadow pt-2 ps-2 pe-2 mb-5 rounded">
+          <div class="card-header bg-transparent d-flex justify-content-between">
             <h5 class="card-title fs-4"><%= task.title %></h5>
+            <i class="fa-solid fa-circle task-status-<%= task_status_class(task) %>"></i>
           </div>
           <div class="card-body">
             <p class="card-text task-description fs-6"><strong>Task:</strong> <br> <%= task.body %></p>
@@ -45,11 +46,12 @@
         </div>
       </div>
     <% end %>
+    <%= paginate @tasks %>
   </div>
   <br>
 </div>
 
-<%= paginate @tasks %>
+
 
 <div class="modal modal-blur fade" id="modal-report" tabindex="-1" style="display: none;" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
