@@ -1,13 +1,13 @@
 module ApplicationHelper
   def task_status_class(task)
     if task.completed
-      return "border border-1 border-success"
+      return "completed"
     elsif task.delivery_date < Date.today
-      return "border border-1 border-danger"
+      return "overdue"
     elsif task.delivery_date > Date.today + 1
-      return "border border-1 border-primary"
+      return "upcoming"
     else
-      return "border border-1 border-warning"
+      return "normal"
     end
   end
 end
