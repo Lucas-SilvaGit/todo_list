@@ -1,3 +1,18 @@
+// Card Login
+.form-check .form-check-input {
+  float: none !important;
+}
+
+.img-fluid {
+  min-height: 100%;
+}
+
+.no-hover-bg:hover {
+  background-color: transparent !important;
+}
+// End Card Login
+
+// Card Modal
 #card-modal{
   padding: 0 20px 0 20px;
 }
@@ -9,37 +24,11 @@
 #delivery_date_field {
   width: 20%;
 }
+// End Card Modal
 
 .body {
   background-color: GhostWhite;
 }
-
-.form-check .form-check-input {
-  float: none !important;
-}
-
-@media (max-width: 540px) {
-  .div-img {
-    display: none;
-  }
-
-  #delivery_date_field {
-    width: 100%;
-  }
-
-  .nav-pagination {
-    position: static!important;
-  }
-}
-
-.img-fluid {
-  min-height: 100%;
-}
-
-.no-hover-bg:hover {
-  background-color: transparent !important;
-}
-
 
 // Status tasks
 .task-status-completed.fa-circle {
@@ -58,4 +47,22 @@
   color: rgb(245, 180, 61);
 }
 
+.custom-cursor-pointer {
+  cursor: pointer;
+}
+
 // End Status tasks
+
+@media (max-width: 540px) {
+  .div-img {
+    display: none;
+  }
+
+  #delivery_date_field {
+    width: 100%;
+  }
+
+  .nav-pagination {
+    position: static!important;
+  }
+}

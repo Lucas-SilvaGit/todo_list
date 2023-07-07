@@ -16,33 +16,36 @@
       <% end %>
     </div>
     <% @tasks.each do |task| %>
-      <div class="col-md-3">
-        <div class="card shadow pt-2 ps-2 pe-2 mb-5 rounded">
-          <div class="card-header bg-transparent d-flex justify-content-between">
-            <h5 class="card-title fs-4"><%= task.title %></h5>
-            <i class="fa-solid fa-circle task-status-<%= task_status_class(task) %>"></i>
-          </div>
-          <div class="card-body">
-            <p class="card-text task-description fs-6"><strong>Task:</strong> <br> <%= task.body %></p>
-            <p class="card-text fs-6"><strong>Delivery Date:</strong> <%= task.delivery_date.strftime('%d/%m/%Y') %></p>
-            <%= simple_form_for(task, remote: true) do |f| %>
-              <%= f.label :completed, "Completed:", class: 'form-check-label fw-bolder' %>
-              <%= f.check_box :completed, class: 'form-check-input' %>
-          </div>
-            <div class="card-footer actions d-flex justify-content-between button-container bg-transparent">
-              <button class="btn btn-outline-primary">
-                <i class="fa-solid fa-arrows-rotate"></i>
-              </button>
+      <div class="col-md-12">
+        <div class="card shadow-sm ps-2 mb-3 rounded">
+          <div class="card-body d-flex justify-content-between align-items-center">
+            <h5 class="card-title"><%= task.title %></h5>
+            <div class="footer d-flex ">
 
-              <%= link_to edit_task_path(task), remote: true, 'data-toggle': "modal", 'data-target': '#modal-report', action: 'edit', class: 'btn btn-outline-secondary' do %>
-                <i class="fas fa-edit"></i>
+              <i class="fa-solid fa-circle me-5 mt-2 custom-cursor-pointer task-status-<%= task_status_class(task) %>" 
+                data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="
+                <span><%= task_status_class(task).capitalize %></span> </br> 
+                <span><%= task.delivery_date.strftime('%d/%B') %></span>">
+              </i>
+
+              <%= simple_form_for(task, remote: true) do |f| %>
+                <%= f.label :completed, "Completed:", class: 'form-check-label fw-bolder me-2' %>
+                <%= f.check_box :completed, class: 'form-check-input me-4 mt-2' %>
+                <button class="btn btn-outline-primary  me-2">
+                  <i class="fa-solid fa-arrows-rotate"></i>
+                </button>
+
+                <%= link_to edit_task_path(task), remote: true, 'data-toggle': "modal", 'data-target': '#modal-report', action: 'edit', class: 'btn btn-outline-secondary  me-2' do %>
+                  <i class="fas fa-edit"></i>
+                <% end %>
+                
+                <%= link_to task, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger  me-2' do %>
+                  <i class="fas fa-trash"></i>
+                <% end %>
               <% end %>
-              
-              <%= link_to task, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger' do %>
-                <i class="fas fa-trash"></i>
-              <% end %>
+
             </div>
-            <% end %>
+          </div>
         </div>
       </div>
     <% end %>
@@ -51,10 +54,17 @@
   <br>
 </div>
 
-
-
 <div class="modal modal-blur fade" id="modal-report" tabindex="-1" style="display: none;" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content"></div>
   </div>
 </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+      return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
+  });
+</script>
