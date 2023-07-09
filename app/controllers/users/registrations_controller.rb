@@ -8,6 +8,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     if resource.persisted?
       set_flash_message! :notice, :signed_up
       sign_up(resource_name, resource)
+      send_welcome_email(resource)
       respond_with resource, location: after_sign_up_path_for(resource)
     else
       clean_up_passwords resource
@@ -18,5 +19,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
       end
       redirect_to new_user_registration_path
     end
+  end
+
+  def send_welcome_email(user)
+    UserMailer.welcome_email(user).deliver_now    
+    Rails.logger.info("E-mail de boas-vindas enviado para #{user.email}")
   end
 end
