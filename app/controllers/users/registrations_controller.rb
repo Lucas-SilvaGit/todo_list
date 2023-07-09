@@ -21,11 +21,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
-  private
-
   def send_welcome_email(user)
-    UserMailer.welcome_email(user).deliver.now    
+    UserMailer.welcome_email(user).deliver_now    
     Rails.logger.info("E-mail de boas-vindas enviado para #{user.email}")
-    puts "E-mail de boas-vindas enviado para #{user.email}"
   end
 end
