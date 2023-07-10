@@ -1,5 +1,18 @@
-<p>Welcome <%= @email %>!</p>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+</head>
+<body>
+  <h1>Welcome to Just Do It App!</h1>
+  <p>Dear <%= @user.email%>,</p>
+  <p>Thank you for joining our application. We are excited to have you on board!</p>
 
-<p>You can confirm your account email through the link below:</p>
+  <p>You can confirm your account email through the link below:</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+  <p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+
+  <p>Best regards,</p>
+  <p>Just Do It App Team</p>
+</body>
+</html>
