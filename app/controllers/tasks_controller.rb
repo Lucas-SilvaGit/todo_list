@@ -37,6 +37,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
+        send_task_reminder_email(@task) if @task.reminder
         format.html { redirect_to root_path, notice: "Task was successfully created.", toastr: "success" }
         format.json { render :show, status: :created, location: @task }
       else
@@ -50,10 +51,14 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to root_path, notice: "Task was successfully updated.", toastr: "success" }
+        send_task_reminder_email(@task) if @task.reminder
+        format.html { redirect_to root_path, notice: "Task was successfully updated." }
         format.json { render :show, status: :ok, location: @task }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html do
+          flash.now[:alert] = @task.errors.full_messages.join(", ")
+          redirect_to root_path
+        end
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
@@ -71,6 +76,12 @@ class TasksController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    def send_task_reminder_email(task)
+      return if task.completed?
+      
+      TaskMailer.task_reminder_email(task).deliver_now
+    end    
+
     def set_task
       @task = Task.find(params[:id])
     end
