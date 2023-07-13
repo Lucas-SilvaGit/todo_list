@@ -29,9 +29,9 @@
               </i>
 
               <% if task.reminder %>
-                <i class="fa-solid fa-bell me-3 mt-2"></i>
+                <i class="fa-solid fa-bell me-3 mt-2 custom-cursor-pointer " data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Reminder ON"></i>
               <% else %>
-                <i class="fa-regular fa-bell me-3 mt-2"></i>
+                <i class="fa-regular fa-bell me-3 mt-2 custom-cursor-pointer " data-bs-toggle="tooltip" data-bs-placement="top" data-bs-html="true" data-bs-original-title="Reminder OFF"></i>
               <% end %>
 
               <%= simple_form_for(task, remote: true) do |f| %>
