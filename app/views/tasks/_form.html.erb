@@ -22,9 +22,16 @@
       <%= form.text_area :body, class:"form-control", placeholder:"Enter task description here!", required: true %>
     </div>
 
-    <div class="mb-3">
+    <div class="mb-3 d-flex ">
+      <div>
       <%= form.label :delivery_date, class:"form-label" %>
       <%= form.date_field :delivery_date, class: "form-control", id: "delivery_date_field", required: true %>
+      </div>
+
+      <div>
+      <%= form.label :reminder, class: "form-label" %>
+      <%= form.check_box :reminder, class: "form-check-input" %>
+      </div>
     </div>
 
     <div class="mb-3">

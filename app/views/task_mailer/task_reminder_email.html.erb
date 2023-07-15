@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+</head>
+<body>
+  <h1>Task Reminder</h1>
+  <p>Dear <%= @task.user.email %>,</p>
+  <p>This is a reminder that your assignment: "<%= @task.title %>" is due soon.</p>
+  <p>Make sure you complete it by the due <%= @task.delivery_date %>.</p>
+  <p>Best regards,</p>
+  <p>Your Application Team</p>
+</body>
+</html>

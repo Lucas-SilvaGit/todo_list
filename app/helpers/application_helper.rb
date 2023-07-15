@@ -7,7 +7,7 @@ module ApplicationHelper
     elsif task.delivery_date > Date.today + 1
       return "upcoming"
     else
-      return "normal"
+      return "soon"
     end
   end
 end
