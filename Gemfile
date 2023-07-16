@@ -72,6 +72,7 @@ gem 'kaminari-i18n', '~> 0.5.0'
 
 gem 'pry-rails'
 
+gem 'omniauth'
 gem 'omniauth-google-oauth2'
 
 gem 'dotenv-rails', :groups => [:development, :test]

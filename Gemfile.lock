@@ -319,6 +319,7 @@ DEPENDENCIES
   net-http
   net-imap
   net-smtp
+  omniauth
   omniauth-google-oauth2
   pry-rails
   puma (~> 5.0)
