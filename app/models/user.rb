@@ -6,6 +6,8 @@ class User < ApplicationRecord
          has_many :tasks, dependent: :destroy
          has_one_attached :avatar
 
+  attr_accessor :provider, :uid
+
   def full_name
     [self.first_name, self.last_name].join(' ')
   end
