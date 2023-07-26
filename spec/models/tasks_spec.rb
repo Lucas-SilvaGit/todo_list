@@ -60,6 +60,23 @@ RSpec.describe Task, type: :model do
         expect(task).not_to be_valid  
         expect(task.errors[:delivery_date]).to include("must be a future date")
       end
+
+      it 'validates delivery date future with reminder on ' do
+        user = create(:user)
+        future_delivery_date = Date.tomorrow
+        task = build(:task, user: user, delivery_date: future_delivery_date, reminder: true)
+
+        expect(task).to be_valid
+        expect(task.errors[:reminder]).not_to include("cannot be set for a task that is already overdue")
+      end
+
+      it 'validates delive date past with reminder on' do
+        user = create(:user)
+        task = build(:task, user: user, delivery_date: Date.yesterday, reminder: true)
+      
+        expect(task).not_to be_valid
+        expect(task.errors[:delivery_date]).to include("must be a future date")
+      end      
     end
   end
 end
