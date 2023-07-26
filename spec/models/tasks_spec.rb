@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Task, type: :model do
 
-  describe "Task Creation" do
+  describe "Creation" do
     context "when data is valid" do
       it 'creates a new task' do
         user = create(:user)
@@ -18,7 +18,7 @@ RSpec.describe Task, type: :model do
       end
     end
   
-    context "when data is in-valid" do
+    context "when data is invalid" do
       it 'validates presence of title' do
         user = create(:user)
         task = build(:task, user: user, title: nil)
@@ -45,6 +45,20 @@ RSpec.describe Task, type: :model do
         task = build(:task, user: user, body: "a" * 101)
         expect(task.valid?).to be_falsey  
         expect(task.errors[:body]).to include("is too long (maximum is 100 characters)")
+      end
+
+      it 'validates presence of delivery date' do
+        user = create(:user)
+        task = build(:task, user: user, delivery_date: nil)
+        expect(task.valid?).to be_falsey
+        expect(task.errors[:delivery_date]).to include("can't be blank")
+      end
+
+      it 'validates delivery date invalid' do
+        user = create(:user)
+        task = build(:task, user: user, delivery_date: Date.yesterday)
+        expect(task).not_to be_valid  
+        expect(task.errors[:delivery_date]).to include("must be a future date")
       end
     end
   end
