@@ -16,7 +16,7 @@ class Task < ApplicationRecord
   end
 
   def check_reminder_validity
-    if reminder? && delivery_date.past?
+    if reminder? && delivery_date.present? && delivery_date.past?
       errors.add(:reminder, "cannot be set for a task that is already overdue")
     end
   end
