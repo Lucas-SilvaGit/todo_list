@@ -5,7 +5,15 @@ class Task < ApplicationRecord
   validates :body,length: { maximum: 100 }, presence: true
   validates :delivery_date, presence: true
 
+  validate :check_delivery_date, on: :create
+
   validate :check_reminder_validity, on: :update
+
+  def check_delivery_date
+    if delivery_date.present? && delivery_date.past?
+      errors.add(:delivery_date, "must be a future date")
+    end
+  end
 
   def check_reminder_validity
     if reminder? && delivery_date.past?
