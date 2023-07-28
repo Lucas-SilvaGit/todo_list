@@ -79,4 +79,27 @@ RSpec.describe Task, type: :model do
       end      
     end
   end
+
+  describe "Associations" do
+    context "with ransack" do
+      it 'vaidates that the task is associated with a valid user' do
+        task = build(:task, user: nil)
+
+        expect(task).not_to be_valid
+        expect(task.errors[:user]).to include("must exist")
+      end
+    end
+    
+    context "ransackable attributes" do
+      it "returns the correct list of attributes for ransack" do
+        expected_attributes = ["body", "completed", "created_at", "delivery_date", "id", "title", "updated_at", "user_id"]
+        expect(Task.ransackable_attributes).to match_array(expected_attributes)
+      end
+
+      it 'returns the correct list of associations for ransack' do
+        expected_associations = ["user"]
+        expect(Task.ransackable_associations).to match_array(expected_associations)  
+      end
+    end
+  end
 end
