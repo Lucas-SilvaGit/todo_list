@@ -13,7 +13,6 @@ import 'bootstrap';
 import '../stylesheets/application';
 import 'jquery';
 import toastr from '../toastrConfig';
-import "footer";
 
 Rails.start();
 Turbolinks.start();
